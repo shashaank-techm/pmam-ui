@@ -1,0 +1,105 @@
+<div class="mat-app-background basic-container">
+  <mat-card>
+    <h3>Registration Form </h3>
+
+    <form class="example-form" #f="ngForm" novalidate (ngSubmit)="save(f.value)">
+      <mat-form-field class="example-full-width" floatLabel=always>
+        <input matInput placeholder="First Name" [formControl]="FNFormControl" required>
+        <mat-error *ngIf="!FNFormControl.hasError('required')">
+          Please enter a valid first Name
+        </mat-error>
+        <mat-error *ngIf="FNFormControl.hasError('required')">
+          First Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" floatLabel=always>
+        <input matInput placeholder="Last Name" [formControl]="LNFormControl" required>
+        <mat-error *ngIf="!LNFormControl.hasError('required')">
+          Please enter a valid Last Name
+        </mat-error>
+        <mat-error *ngIf="LNFormControl.hasError('required')">
+          Last Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" floatLabel=always>
+        <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" required>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" floatLabel=always>
+        <input matInput placeholder="Date of Birth" [matDatepicker]="picker" [formControl]="DOBFormControl" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="DOBFormControl.hasError('required')">
+          Date of Birth is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width" floatLabel=always>
+        <input matInput placeholder="Contact" type="text" #contact maxlength="10" [formControl]="contactFormControl" required>
+        <mat-hint align="end">{{contact.value.length}} / 10</mat-hint>
+        <mat-error *ngIf="contactFormControl.hasError('required')">
+          contact is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="contactFormControl.hasError('pattern')">
+          contact details hould be numeric
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <div class="alternative-theme">
+        <label for="Gender" required>Gender * :</label>
+        <mat-radio-group color="accent">
+          <mat-radio-button value="1">Male</mat-radio-button>
+          <mat-radio-button value="2">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <br>
+
+      <mat-form-field class="example-full-width" floatLabel=always>
+        <textarea matInput placeholder="Address" [formControl]="AddressFormControl" required></textarea>
+        <mat-error *ngIf="!AddressFormControl.hasError('required')">
+          Please enter a valid Address
+        </mat-error>
+        <mat-error *ngIf="AddressFormControl.hasError('required')">
+          Address is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" floatLabel=always>
+        <input matInput type="password" placeholder="Password" minlength="8" [formControl]="passwordFormControl" pattern="(?=^.{8,16}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$"
+          required validateEqual="confirmPasswordFormControl" reverse="true">
+        <mat-error *ngIf="passwordFormControl.invalid || !(passwordFormControl.pristine && !f.submitted)">
+          Password must contain atleast 8 characters,1 upper case,1 lower case,1 numerical,1 special character
+        </mat-error>
+      </mat-form-field>
+      <br><br>
+      
+      <mat-form-field class="example-full-width" floatLabel=always>
+        <input matInput type="password" placeholder="ConfirmPassword" minlength=8 [formControl]="confirmPasswordFormControl" required
+          validateEqual="passwordFormControl" reverse="false">
+        <mat-error *ngIf="confirmPasswordFormControl.invalid || !(confirmPasswordFormControl.pristine && !f.submitted)">
+          Password mismatch
+        </mat-error>
+      </mat-form-field>
+
+      <div class="alternative-theme">
+        <mat-checkbox>I accept terms and conditions in this aggreement</mat-checkbox>
+      </div>
+  </form>
+      <br><br>
+      <div class="button-row">
+        <button mat-raised-button color="primary" [disabled]="!f.valid">Register</button>
+        <button mat-raised-button color="accent">Reset</button>
+      </div>
+      <!-- <h4> Already have an Account ? <a>Log In</a> </h4> -->
+ 
+  </mat-card>
+</div>

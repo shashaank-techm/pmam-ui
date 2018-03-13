@@ -1,0 +1,35 @@
+ .sign-in {
+  vertical-align: middle !important;
+}
+
+.example-spacer {
+  display:flex;
+  flex: 5 5 auto;
+} 
+.login-form {
+  /* width: 150px;*/
+  max-width: 500px; 
+  width: 100%;
+}
+.full-width{
+    text-align:center;
+    width:100%;
+}
+.align-me-to-center{
+    text-align:center;
+}
+
+span a{
+  text-decoration: underline !important;
+}
+.go-right{
+  float:right;
+}
+
+.go-left{
+  float:left;
+}
+
+.change-my-font{
+    font-family: 'Quicksand','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

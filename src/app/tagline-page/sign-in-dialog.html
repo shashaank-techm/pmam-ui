@@ -1,0 +1,33 @@
+<h1 mat-dialog-title class="change-my-font align-me-to-center i-dont-want-to-be-huge">Login</h1>
+<form class="login-form" [formGroup] = "loginForm" novalidate>
+<mat-list>
+  <mat-list-item class="change-my-font i-dont-want-to-be-huge">
+    <mat-icon matListIcon aria-hidden="true">account_circle</mat-icon>
+     <mat-form-field class="full-width">
+    <input matInput type="text" formControl="UserNameFormControl" [errorStateMatcher]="matcher" placeholder="Username" required>
+      <mat-error *ngIf="!UserNameFormControl.valid">
+        Username is <strong>required</strong>
+      </mat-error>
+  </mat-form-field>
+  </mat-list-item> 
+<br>
+<mat-list-item class="change-my-font i-dont-want-to-be-huge">
+<mat-icon matListIcon aria-hidden="true">lock_outline</mat-icon>
+    <mat-form-field class="full-width">
+    <input matInput type="password" placeholder="Password" [errorStateMatcher]="matcher"  formControl="PasswordFormControl" required>
+       <mat-error *ngIf="!PasswordFormControl.valid">
+          Password is <strong>required</strong>
+        </mat-error>
+  </mat-form-field>
+  </mat-list-item>
+</mat-list>
+</form>
+<br>
+<span class="change-my-font align-me-to-center go-left">Remember Me: <mat-slide-toggle></mat-slide-toggle></span>
+<span class="change-my-font align-me-to-center go-right"><a href="#" >Forgot Password?</a></span><br><br>
+<div class="align-me-to-center"><span class="change-my-font align-me-to-center" id="account-span">Dont have an account? <a (click)="openSignUpPage()">Click here</a>.</span></div>
+<br><br>
+<div mat-dialog-actions class="align-me-to-center">
+  <button mat-raised-button color="primary" (click)="onNoClick()">Sign In</button>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Close</button>
+</div>
